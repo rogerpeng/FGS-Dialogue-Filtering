@@ -1,0 +1,16 @@
+{
+  "participants": [
+    20,
+    30,
+    40,
+    60
+  ],
+  "items_per_participant": 20,
+  "simulations": 1000,
+  "comparison_alpha": 0.00625,
+  "latent_difference": 0.3,
+  "participant_difference_sd": 0.4,
+  "item_difference_sd": 0.3,
+  "rating_noise_sd": 0.8,
+  "seed": 42
+}

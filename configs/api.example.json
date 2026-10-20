@@ -1,0 +1,14 @@
+{
+  "base_url": "https://api.openai.com/v1",
+  "api_key_env": "OPENAI_API_KEY",
+  "generator_model": "YOUR_GENERATOR_MODEL_OR_FINE_TUNE_ID",
+  "refiner_model": "YOUR_REFINER_MODEL_OR_FINE_TUNE_ID",
+  "filter_model": "YOUR_INSTRUCTION_TUNED_FILTER_MODEL",
+  "guard_model": null,
+  "max_completion_tokens": 600,
+  "temperature": null,
+  "timeout_seconds": 60,
+  "max_calls": 100,
+  "max_generation_attempts": 3,
+  "max_refinements": 3
+}

@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "sources": [
+    "../incoming/records.jsonl"
+  ],
+  "split": {
+    "seed": 42,
+    "near_threshold": 0.9,
+    "fractions": [
+      0.6,
+      0.2,
+      0.2
+    ]
+  },
+  "classifiers": {
+    "kinds": [
+      "tfidf",
+      "word2vec",
+      "word2vec_linear",
+      "transformer",
+      "transformer_mlp"
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "epochs": 300,
+    "patience": 25,
+    "learning_rates": [
+      0.001,
+      0.01
+    ],
+    "Cs": [
+      0.1,
+      1,
+      10
+    ],
+    "embedding_model": "YOUR_PINNED_SENTENCE_TRANSFORMER",
+    "embedding_revision": "YOUR_COMMIT_HASH",
+    "local_files_only": false
+  },
+  "learning_fractions": [
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "permutation_control": true,
+  "fine_tuning": [
+    {
+      "name": "generation_42",
+      "task": "generation",
+      "base_model": "YOUR_SUPPORTED_BASE_MODEL",
+      "seed": 42,
+      "hyperparameters": {
+        "n_epochs": "auto"
+      },
+      "api_key_env": "OPENAI_API_KEY"
+    },
+    {
+      "name": "refinement_42",
+      "task": "refinement",
+      "base_model": "YOUR_SUPPORTED_BASE_MODEL",
+      "seed": 42,
+      "hyperparameters": {
+        "n_epochs": "auto"
+      },
+      "api_key_env": "OPENAI_API_KEY"
+    }
+  ],
+  "generation_systems": [
+    {
+      "name": "primary",
+      "generator": {
+        "fine_tune_job": "generation_42"
+      },
+      "refiner": {
+        "fine_tune_job": "refinement_42"
+      },
+      "api": {
+        "base_url": "https://api.openai.com/v1",
+        "api_key_env": "OPENAI_API_KEY",
+        "filter_model": "YOUR_INSTRUCTION_TUNED_FILTER_MODEL",
+        "guard_model": null,
+        "max_completion_tokens": 600,
+        "temperature": null,
+        "timeout_seconds": 60,
+        "max_calls": 100,
+        "max_generation_attempts": 3,
+        "max_refinements": 3
+      },
+      "question_model": "word2vec_seed42",
+      "answer_model": "word2vec_seed42",
+      "variants": [
+        "b1",
+        "b2",
+        "full",
+        "no_query",
+        "no_answer",
+        "refinement_only",
+        "query_only",
+        "answer_only"
+      ],
+      "replicates": 3
+    },
+    {
+      "name": "modern_instruction",
+      "generator": "YOUR_CURRENT_INSTRUCTION_MODEL",
+      "refiner": "YOUR_CURRENT_INSTRUCTION_MODEL",
+      "api": {
+        "base_url": "https://api.openai.com/v1",
+        "api_key_env": "OPENAI_API_KEY",
+        "filter_model": "YOUR_INSTRUCTION_TUNED_FILTER_MODEL",
+        "guard_model": null,
+        "max_completion_tokens": 600,
+        "temperature": null,
+        "timeout_seconds": 60,
+        "max_calls": 100,
+        "max_generation_attempts": 3,
+        "max_refinements": 3
+      },
+      "question_model": "word2vec_seed42",
+      "answer_model": "word2vec_seed42",
+      "variants": [
+        "b1"
+      ],
+      "replicates": 3
+    }
+  ],
+  "llm_classifiers": [
+    {
+      "name": "instruction_baseline",
+      "api": {
+        "base_url": "https://api.openai.com/v1",
+        "api_key_env": "OPENAI_API_KEY",
+        "generator_model": "YOUR_GENERATOR_MODEL_OR_FINE_TUNE_ID",
+        "refiner_model": "YOUR_REFINER_MODEL_OR_FINE_TUNE_ID",
+        "filter_model": "YOUR_INSTRUCTION_TUNED_FILTER_MODEL",
+        "guard_model": null,
+        "max_completion_tokens": 600,
+        "temperature": null,
+        "timeout_seconds": 60,
+        "max_calls": 100,
+        "max_generation_attempts": 3,
+        "max_refinements": 3
+      }
+    }
+  ],
+  "human_evaluation": {
+    "participants": [
+      "REPLACE_WITH_REAL_PSEUDONYMOUS_IDS"
+    ],
+    "seed": 42,
+    "items_per_participant": 20,
+    "reference": "primary__full",
+    "contrasts": [
+      [
+        "primary__full",
+        "primary__b1"
+      ],
+      [
+        "primary__full",
+        "primary__b2"
+      ],
+      [
+        "primary__full",
+        "primary__no_query"
+      ],
+      [
+        "primary__full",
+        "primary__no_answer"
+      ],
+      [
+        "primary__full",
+        "primary__refinement_only"
+      ],
+      [
+        "primary__full",
+        "primary__query_only"
+      ],
+      [
+        "primary__full",
+        "primary__answer_only"
+      ],
+      [
+        "primary__full",
+        "modern_instruction__b1"
+      ]
+    ]
+  },
+  "primary_seed": 42,
+  "classifier_contrasts": [
+    [
+      "word2vec",
+      "tfidf"
+    ],
+    [
+      "word2vec",
+      "word2vec_linear"
+    ],
+    [
+      "word2vec",
+      "transformer"
+    ],
+    [
+      "word2vec",
+      "transformer_mlp"
+    ]
+  ]
+}

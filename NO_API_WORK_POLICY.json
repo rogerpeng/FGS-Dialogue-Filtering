@@ -1,0 +1,13 @@
+{
+  "status": "all_api_key_work_skipped_by_user",
+  "new_api_calls_authorized": false,
+  "scope": "all future work requiring any provider API key",
+  "instruction": "後續所有需要API Key的工作一律跳過，包括新增生成、重複抽樣、風險挑戰、LLM評審／分類、雲端embedding、微調與外部資料的API推論。適用所有供應商，不限於OpenAI或是否收費。不得要求輸入Key、使用既有Key或因快取缺漏改呼叫API；快取不足時將該項標為跳過。只繼續不需Key的本機處理、現有快取分析、人工評估與論文整理。",
+  "preserve_completed_results": true,
+  "allowed": [
+    "offline computation",
+    "existing cached responses",
+    "human evaluation",
+    "paper revision"
+  ]
+}

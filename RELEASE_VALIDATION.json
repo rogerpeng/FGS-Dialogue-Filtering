@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-20",
+  "release": "source_and_table1_data",
+  "published_by_this_task": false,
+  "python_source_parse": "passed",
+  "data_verification": {
+    "status": "passed",
+    "counts": {
+      "classifier_pairs": 2400,
+      "classifier_texts": 8114,
+      "balanced_questions": 240,
+      "balanced_outputs": 5040,
+      "short_questions": 308,
+      "short_outputs": 2156,
+      "short_ratings": 2156
+    },
+    "axis_scores": 6468,
+    "common_accepted_questions": 258,
+    "tables_4_5": {
+      "word2vec__b2": {
+        "accepted": 282,
+        "interception_percent": 8.44,
+        "accepted_mean": 4.866,
+        "all_mean": 4.54,
+        "common_mean": 4.886
+      },
+      "word2vec__full": {
+        "accepted": 269,
+        "interception_percent": 12.66,
+        "accepted_mean": 4.862,
+        "all_mean": 4.386,
+        "common_mean": 4.875
+      },
+      "generic_b1": {
+        "accepted": 308,
+        "interception_percent": 0.0,
+        "accepted_mean": 4.847,
+        "all_mean": 4.847,
+        "common_mean": 4.913
+      },
+      "tfidf__full": {
+        "accepted": 292,
+        "interception_percent": 5.19,
+        "accepted_mean": 4.837,
+        "all_mean": 4.637,
+        "common_mean": 4.875
+      },
+      "domain_b1": {
+        "accepted": 308,
+        "interception_percent": 0.0,
+        "accepted_mean": 4.833,
+        "all_mean": 4.833,
+        "common_mean": 4.884
+      },
+      "transformer__full": {
+        "accepted": 302,
+        "interception_percent": 1.95,
+        "accepted_mean": 4.828,
+        "all_mean": 4.753,
+        "common_mean": 4.875
+      },
+      "domain_refinement_only": {
+        "accepted": 308,
+        "interception_percent": 0.0,
+        "accepted_mean": 4.821,
+        "all_mean": 4.821,
+        "common_mean": 4.876
+      }
+    },
+    "table_7": {
+      "tfidf__full": {
+        "correct": 240,
+        "n": 240,
+        "conformity": 1.0
+      },
+      "transformer__full": {
+        "correct": 238,
+        "n": 240,
+        "conformity": 0.9917
+      },
+      "word2vec__full": {
+        "correct": 237,
+        "n": 240,
+        "conformity": 0.9875
+      },
+      "domain_b1": {
+        "correct": 120,
+        "n": 240,
+        "conformity": 0.5
+      }
+    },
+    "api_calls": 0,
+    "training_runs": 0
+  },
+  "secret_scan": {
+    "known_credential_values_checked": 33,
+    "known_credentials": "no matches",
+    "common_secret_patterns": "no matches",
+    "dataset_email_mobile_patterns": "no matches"
+  },
+  "research_operational_database_included": false,
+  "public_analysis_database_created_fresh": true,
+  "tests_in_public_package": false,
+  "prior_source_only_demo_workflow": "passed 2026-10-18",
+  "clean_release_demo_workflow": "passed in clean ZIP extraction 2026-10-20",
+  "full_classifier_retraining_rerun": false,
+  "new_paid_api_calls": 0,
+  "ui_wording_update": {
+    "date": "2026-10-21",
+    "file": "rating_app/static/index.html",
+    "change": "Clarify full operational backup versus curated public data export; no functional change"
+  }
+}

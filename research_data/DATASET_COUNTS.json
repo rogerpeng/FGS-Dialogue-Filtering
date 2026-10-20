@@ -1,0 +1,38 @@
+{
+  "classifier_pairs": 2400,
+  "classifier_text_partitions": {
+    "random": {
+      "question": {
+        "train": 1828,
+        "validation": 240,
+        "test": 240
+      },
+      "answer": {
+        "train": 1414,
+        "validation": 226,
+        "test": 228
+      }
+    },
+    "grouped": {
+      "question": {
+        "train": 1352,
+        "validation": 457,
+        "test": 445
+      },
+      "answer": {
+        "train": 1016,
+        "validation": 332,
+        "test": 336
+      }
+    }
+  },
+  "balanced_questions": 240,
+  "balanced_configurations": 21,
+  "balanced_outputs": 5040,
+  "short_questions": 308,
+  "short_configurations": 7,
+  "short_outputs": 2156,
+  "output_level_rating_vectors": 2156,
+  "axis_scores": 6468,
+  "individual_rater_assignments_available": false
+}
